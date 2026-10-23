@@ -115,7 +115,7 @@ pip install -r requirements.txt
 
 ### Running on Windows
 - **One-Click Auto-Setup Launcher**: Double-click `run_python.bat`. It will automatically check for missing packages, install them via `pip` if needed, and start the GUI.
-- **Silent Launch (Zero Console)**: Double-click `run_silent.vbs` or `app.pyw`.
+- **Silent Launch (Zero Console)**: Double-click `app.pyw`.
 - **Command Prompt / PowerShell**:
   ```cmd
   python app.py
