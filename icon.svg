@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" fill="none">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1120" />
+      <stop offset="50%" stop-color="#070c18" />
+      <stop offset="100%" stop-color="#030712" />
+    </linearGradient>
+
+    <!-- Border Glow -->
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#0284c7" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.6" />
+    </linearGradient>
+
+    <!-- Gyroid Surface Gradients (Lighting & Depth) -->
+    <linearGradient id="surfTop" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#a5f3fc" />
+      <stop offset="30%" stop-color="#38bdf8" />
+      <stop offset="70%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#0369a1" />
+    </linearGradient>
+
+    <linearGradient id="surfFrontLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="45%" stop-color="#0284c7" />
+      <stop offset="85%" stop-color="#1e40af" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <linearGradient id="surfFrontRight" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#7dd3fc" />
+      <stop offset="40%" stop-color="#0ea5e9" />
+      <stop offset="80%" stop-color="#0369a1" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+
+    <linearGradient id="surfInterior" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+
+    <linearGradient id="ribbonGlow" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.9" />
+      <stop offset="50%" stop-color="#67e8f9" stop-opacity="1" />
+      <stop offset="100%" stop-color="#0284c7" stop-opacity="0.8" />
+    </linearGradient>
+
+    <!-- Radial Core Glow -->
+    <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.3" />
+      <stop offset="70%" stop-color="#0284c7" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#0284c7" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Filter for subtle outer glow -->
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Base Icon Card Rounded Background -->
+  <rect x="6" y="6" width="244" height="244" rx="54" fill="url(#bgGrad)" />
+  <rect x="6" y="6" width="244" height="244" rx="54" stroke="url(#borderGrad)" stroke-width="2" />
+
+  <!-- Subtle Ambient Core Glow behind Gyroid -->
+  <circle cx="128" cy="128" r="90" fill="url(#coreGlow)" />
+
+  <!-- Isometric Bounding Unit Cell Box (Subtle Wireframe Reference) -->
+  <!-- Top Face -->
+  <polygon points="128,34 214,84 128,134 42,84" fill="none" stroke="#38bdf8" stroke-width="1.2" stroke-opacity="0.25" stroke-dasharray="4 4" />
+  <!-- Left Face -->
+  <polygon points="42,84 128,134 128,222 42,172" fill="none" stroke="#38bdf8" stroke-width="1.2" stroke-opacity="0.2" stroke-dasharray="4 4" />
+  <!-- Right Face -->
+  <polygon points="128,134 214,84 214,172 128,222" fill="none" stroke="#38bdf8" stroke-width="1.2" stroke-opacity="0.2" stroke-dasharray="4 4" />
+
+  <!-- Outer Isometric Box Silhouette Edges -->
+  <path d="M128,34 L214,84 L214,172 L128,222 L42,172 L42,84 Z" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-opacity="0.35" />
+
+  <!-- ======================================================== -->
+  <!-- GYROID MINIMAL SURFACE GEOMETRY (Saddle & Ribbon Topology)-->
+  <!-- ======================================================== -->
+
+  <!-- Deep Interior Cavity Shading (Back Tunnel) -->
+  <path d="M96,98 C112,82 144,82 160,98 C176,114 176,142 160,158 C144,174 112,174 96,158 C80,142 80,114 96,98 Z"
+        fill="url(#surfInterior)" opacity="0.9" />
+
+  <!-- Backward Arching Neck of Gyroid Ribbon -->
+  <path d="M84,88 C98,72 130,68 150,80 C166,90 178,110 172,130 C168,145 152,156 138,150 C122,144 118,124 104,116 C92,108 80,102 84,88 Z"
+        fill="url(#surfTop)" opacity="0.85" />
+
+  <!-- Main Gyroid Front Saddle Surface - Primary Loop (Upper & Left to Right) -->
+  <path d="M42,126 C60,104 88,96 112,108 C136,120 148,148 174,152 C196,155 214,142 214,126 C214,146 194,168 170,166 C140,163 124,136 102,124 C82,113 60,118 42,138 Z"
+        fill="url(#surfFrontLeft)" filter="url(#softGlow)" />
+
+  <!-- Interlocking Orthogonal Saddle Tunnel (Connecting Top Face to Bottom-Right Face) -->
+  <path d="M128,52 C146,72 152,102 142,126 C132,150 110,168 116,194 C120,210 128,222 128,222 C128,222 108,206 102,186 C96,160 114,138 124,118 C134,98 128,74 114,58 Z"
+        fill="url(#surfFrontRight)" />
+
+  <!-- Central Saddle Core Crest Ribbon with Brilliant Iridescent Specular Highlight -->
+  <path d="M68,118 C90,100 120,102 140,126 C158,148 178,156 200,150 C182,160 156,152 138,132 C120,112 92,110 68,124 Z"
+        fill="url(#ribbonGlow)" />
+
+  <!-- Front Lower Gyroid Fold (Watertight Boundary Base Transition) -->
+  <path d="M74,152 C90,168 114,178 136,172 C154,167 168,154 184,158 C170,174 148,186 128,184 C104,182 86,170 74,152 Z"
+        fill="url(#surfTop)" opacity="0.9" />
+
+  <!-- Top Inflow Pore Opening Ellipse -->
+  <ellipse cx="128" cy="58" rx="20" ry="10" fill="url(#surfInterior)" stroke="#38bdf8" stroke-width="1.8" />
+  <ellipse cx="128" cy="58" rx="14" ry="7" fill="#030712" opacity="0.8" />
+
+  <!-- Left Lateral Inflow Pore Opening -->
+  <path d="M42,126 C42,112 52,106 60,116 C68,126 66,142 54,146 C46,148 42,138 42,126 Z"
+        fill="url(#surfInterior)" stroke="#38bdf8" stroke-width="1.6" />
+
+  <!-- Right Lateral Inflow Pore Opening -->
+  <path d="M214,126 C214,140 204,148 196,138 C188,128 190,112 202,108 C210,106 214,114 214,126 Z"
+        fill="url(#surfInterior)" stroke="#38bdf8" stroke-width="1.6" />
+
+  <!-- Bottom Outflow Pore Opening -->
+  <ellipse cx="128" cy="198" rx="22" ry="11" fill="url(#surfInterior)" stroke="#38bdf8" stroke-width="1.8" />
+  <ellipse cx="128" cy="198" rx="16" ry="7" fill="#030712" opacity="0.85" />
+
+  <!-- Sharp Specular Highlight Accents on Ridge Contours -->
+  <path d="M82,102 C104,94 126,108 144,128 C158,144 174,152 192,148"
+        fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" opacity="0.75" />
+
+  <path d="M124,68 C132,86 132,106 122,124"
+        fill="none" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" opacity="0.6" />
+
+  <!-- Minimal Corner Accent Dots (CAD Coordinate Marker Aesthetics) -->
+  <circle cx="128" cy="34" r="3" fill="#38bdf8" />
+  <circle cx="214" cy="84" r="3" fill="#38bdf8" opacity="0.7" />
+  <circle cx="42" cy="84" r="3" fill="#38bdf8" opacity="0.7" />
+  <circle cx="128" cy="222" r="3" fill="#38bdf8" />
+  <circle cx="42" cy="172" r="3" fill="#0284c7" opacity="0.5" />
+  <circle cx="214" cy="172" r="3" fill="#0284c7" opacity="0.5" />
+</svg>
